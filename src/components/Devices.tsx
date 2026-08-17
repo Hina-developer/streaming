@@ -1,23 +1,28 @@
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Tv, Smartphone, Apple, Flame, Radio, HardDrive } from 'lucide-react';
+import { Tv, Smartphone, Apple, Flame, Radio, HardDrive, Monitor, Gamepad2 } from 'lucide-react';
 import { useApp } from '@/context';
 
-const DEVICE_ICONS = [Tv, Smartphone, Apple, Flame, Radio, HardDrive];
+const DEVICE_ICONS = [Tv, Smartphone, Apple, Flame, Radio, HardDrive, Monitor, Gamepad2];
 
 export default function Devices() {
   const { t, isRTL } = useApp();
-  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const scroll = (dir: 'left' | 'right') => {
-    if (!scrollRef.current) return;
-    const amount = 300;
-    const direction = isRTL ? (dir === 'left' ? 'right' : 'left') : dir;
-    scrollRef.current.scrollBy({
-      left: direction === 'left' ? -amount : amount,
-      behavior: 'smooth',
-    });
-  };
+  // Devices data with added Mi TV and Google Chromecast
+  const devices = [
+    { name: 'Mi TV', desc: 'Smart TV with built-in Chromecast' },
+    { name: 'Google Chromecast', desc: 'Stream content from your phone' },
+    { name: 'Apple TV', desc: 'Seamless integration with Apple ecosystem' },
+    { name: 'Amazon Fire Stick', desc: 'Affordable streaming device' },
+    { name: 'Roku', desc: 'Simple and intuitive interface' },
+    { name: 'Samsung Smart TV', desc: 'QLED display with smart features' },
+    { name: 'Sony Bravia', desc: 'Premium viewing experience' },
+    { name: 'NVIDIA Shield', desc: 'Android TV with gaming capabilities' },
+  ];
+
+  // Split devices into 2 rows of 4
+  const firstRow = devices.slice(0, 4);
+  const secondRow = devices.slice(4, 8);
 
   return (
     <section id="devices" className="section-pad relative" style={{ background: 'var(--bg-secondary)' }}>
@@ -37,47 +42,52 @@ export default function Devices() {
           </p>
         </motion.div>
 
-        <div className="relative">
-          {/* Scroll buttons */}
-          <button
-            onClick={() => scroll('left')}
-            className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full glass items-center justify-center hover:border-amber-400/50 transition-all"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={() => scroll('right')}
-            className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full glass items-center justify-center hover:border-amber-400/50 transition-all"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
+        {/* Grid Layout - 2 rows of 4 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {firstRow.map((device, i) => {
+            const Icon = DEVICE_ICONS[i % DEVICE_ICONS.length];
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                whileHover={{ y: -6, scale: 1.03 }}
+                className="glass-card p-6 card-glow transition-all"
+              >
+                <div className="w-14 h-14 rounded-2xl accent-bg flex items-center justify-center mb-4">
+                  <Icon className="w-7 h-7 text-black" strokeWidth={2} />
+                </div>
+                <h3 className="text-lg font-bold mb-1">{device.name}</h3>
+                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{device.desc}</p>
+              </motion.div>
+            );
+          })}
+        </div>
 
-          {/* Carousel */}
-          <div
-            ref={scrollRef}
-            className="flex gap-4 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-4"
-          >
-            {t.devices.items.map((item, i) => {
-              const Icon = DEVICE_ICONS[i % DEVICE_ICONS.length];
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.05 }}
-                  whileHover={{ y: -6, scale: 1.03 }}
-                  className="snap-start shrink-0 w-64 sm:w-72 glass-card p-6 card-glow transition-all"
-                >
-                  <div className="w-14 h-14 rounded-2xl accent-bg flex items-center justify-center mb-4">
-                    <Icon className="w-7 h-7 text-black" strokeWidth={2} />
-                  </div>
-                  <h3 className="text-lg font-bold mb-1">{item.name}</h3>
-                  <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{item.desc}</p>
-                </motion.div>
-              );
-            })}
-          </div>
+        {/* Second Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+          {secondRow.map((device, i) => {
+            const Icon = DEVICE_ICONS[(i + 4) % DEVICE_ICONS.length];
+            return (
+              <motion.div
+                key={i + 4}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: (i + 4) * 0.05 }}
+                whileHover={{ y: -6, scale: 1.03 }}
+                className="glass-card p-6 card-glow transition-all"
+              >
+                <div className="w-14 h-14 rounded-2xl accent-bg flex items-center justify-center mb-4">
+                  <Icon className="w-7 h-7 text-black" strokeWidth={2} />
+                </div>
+                <h3 className="text-lg font-bold mb-1">{device.name}</h3>
+                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{device.desc}</p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

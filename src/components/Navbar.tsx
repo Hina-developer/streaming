@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon, MessageCircle, Zap, Tv, Globe } from 'lucide-react';
 import { useApp } from '@/context';
 import { whatsappLink } from '@/constants';
+import darklogo from '@/assets/logo1.png'; // ✅ Dark theme logo
+import lightlogo from '@/assets/logo2.png'; // ✅ Light theme logo
 
 export default function Navbar() {
   const { t, lang, toggleLang, theme, toggleTheme, isRTL } = useApp();
@@ -36,6 +38,9 @@ export default function Navbar() {
     }, 350);
   };
 
+  // Select logo based on theme
+  const logo = theme === 'dark' ? darklogo : lightlogo;
+
   return (
     <>
       <motion.header
@@ -47,18 +52,16 @@ export default function Navbar() {
         }`}
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-18">
-            {/* Logo */}
+          <div className="flex items-center justify-between h-16 lg:h-20">
+            {/* Logo - Increased size */}
             <a href="#home" className="flex items-center gap-2 shrink-0">
               <div className="relative">
-                <div className="w-9 h-9 rounded-lg accent-bg flex items-center justify-center shadow-lg">
-                  <Tv className="w-5 h-5 text-black" strokeWidth={2.5} />
-                </div>
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+                <img 
+                  src={logo}
+                  alt="Logo" 
+                  className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-lg object-contain"
+                />
               </div>
-              <span className="font-extrabold text-base lg:text-lg tracking-tight">
-                4K <span className="accent-text">Streaming</span> TV
-              </span>
             </a>
 
             {/* Desktop Nav */}

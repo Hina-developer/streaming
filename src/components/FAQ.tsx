@@ -19,7 +19,7 @@ export default function FAQ() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4">
             <HelpCircle className="w-4 h-4 accent-text" />
-            <span className="text-sm font-semibold">{t.faq.title}</span>
+            <span className="text-sm font-semibold">{t.faq.tag}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
             {t.faq.title}

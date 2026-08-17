@@ -1,6 +1,8 @@
-export const WHATSAPP_NUMBER = '966500000000';
+export const WHATSAPP_NUMBER = '966598226892';
+import darklogo from '@/assets/background.png'; // ✅ Dark theme logo
+
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-  'Hello! I am interested in your 4K Streaming TV packages. Can you tell me more?'
+  "Hello! I'm interested in your Prime Stream TV packages. Can you tell me more about them?"
 )}`;
 
 export function whatsappLink(message: string) {
@@ -12,7 +14,8 @@ export const HERO_VIDEO_SOURCES = [
   'https://cdn.coverr.co/videos/coverr-clouds-time-lapse-1080p.mp4',
 ];
 
-export const HERO_POSTER = 'https://images.pexels.com/photos/9665186/pexels-photo-9665186.jpeg?auto=compress&cs=tinysrgb&w=1920';
+// ✅ Changed to use local background.png
+export const HERO_POSTER = darklogo; // or you can use: 'https://images.pexels.com/photos/9665186/pexels-photo-9665186.jpeg?auto=compress&cs=tinysrgb&w=1920'
 
 export const MOVIE_POSTERS = [
   'https://images.pexels.com/photos/8107956/pexels-photo-8107956.jpeg?auto=compress&cs=tinysrgb&h=650&w=440',

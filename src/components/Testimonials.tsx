@@ -1,10 +1,18 @@
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 import { useApp } from '@/context';
-import { TESTIMONIAL_AVATARS } from '@/constants';
 
 export default function Testimonials() {
   const { t } = useApp();
+
+  // Female names list
+  const femaleNames = ['Nora', 'Fatima', 'Aisha', 'Zara', 'Leila', 'Sofia', 'Maya', 'Layla'];
+
+  const getAvatarUrl = (name) => {
+    const isFemale = femaleNames.some(fName => name.includes(fName));
+    // Using UI Avatars API with gender-specific styling
+    return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=${isFemale ? 'fce4ec' : 'e3f2fd'}&color=${isFemale ? 'c62828' : '1565c0'}&size=128&rounded=true&bold=true&font-size=0.5`;
+  };
 
   return (
     <section id="testimonials" className="section-pad relative" style={{ background: 'var(--bg-secondary)' }}>
@@ -52,7 +60,7 @@ export default function Testimonials() {
               {/* User */}
               <div className="flex items-center gap-3">
                 <img
-                  src={TESTIMONIAL_AVATARS[i % TESTIMONIAL_AVATARS.length]}
+                  src={getAvatarUrl(item.name)}
                   alt={item.name}
                   loading="lazy"
                   className="w-11 h-11 rounded-full object-cover ring-2 ring-amber-400/30"

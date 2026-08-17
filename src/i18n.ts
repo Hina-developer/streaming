@@ -143,7 +143,7 @@ export const translations: Record<Lang, Translation> = {
       plans: [
         { name: '1 Year', before: 750, now: 375, years: '1 year' },
         { name: '3 Years', before: 1725, now: 860, years: '3 years' },
-        { name: '5 Years', before: 2625, now: 1310, years: '5 years' },
+        { name: '5 Years', before: 2420, now: 1210, years: '5 years' },
       ],
     },
     devices: {
@@ -184,12 +184,30 @@ export const translations: Record<Lang, Translation> = {
       title: 'Frequently Asked Questions',
       subtitle: 'Everything you need to know before getting started.',
       items: [
-        { q: 'How do I get a free trial?', a: 'Simply click the "Get Free Trial" button and message us on WhatsApp. We will set up your 1-hour free trial within minutes so you can test the service before subscribing.' },
-        { q: 'Which devices are supported?', a: 'Our service works on Smart TVs (Samsung, LG, Sony), Android devices, iOS / Apple TV, Amazon Fire TV, Roku, Mag boxes, and most IPTV-compatible devices.' },
-        { q: 'How many devices can I use simultaneously?', a: 'Each subscription supports up to 3 devices streaming at the same time, so your whole family can enjoy different content simultaneously.' },
-        { q: 'What quality can I expect?', a: 'We offer full 4K Ultra HD streaming for supported channels and content, with HD fallback for all other content. A stable 15 Mbps connection is recommended for 4K.' },
-        { q: 'How do I pay for my subscription?', a: 'We accept Visa, MasterCard, American Express, and Discover. All payments are processed securely. You can also contact us on WhatsApp for alternative payment methods.' },
-        { q: 'Can I cancel my subscription?', a: 'Yes, you can cancel anytime. We offer 1, 3, and 5-year plans with upfront pricing — no recurring charges or hidden fees.' },
+        { 
+          q: 'How do I get a free trial?', 
+          a: 'Simply click the "Get Free Trial" button and message us on WhatsApp. We will set up your 1-hour free trial within minutes so you can test the service before subscribing.' 
+        },
+        { 
+          q: 'Which devices are supported?', 
+          a: 'Our service supports a wide range of devices including Smart TVs (Samsung, LG, Sony), Android TV boxes, Apple TV, Firestick, smartphones (iOS & Android), tablets, computers via web browser, Roku, Mag boxes, Formuler, and most IPTV-compatible devices.' 
+        },
+        { 
+          q: 'How many devices can I use simultaneously?', 
+          a: 'Each subscription supports up to 3 devices streaming at the same time, so your whole family can enjoy different content simultaneously.' 
+        },
+        { 
+          q: 'What quality can I expect?', 
+          a: 'We offer full 4K Ultra HD streaming for supported channels and content, with HD fallback for all other content. For the best experience, we recommend a stable 50Mbps connection to enjoy crystal clear 4K streaming with minimal buffering.' 
+        },
+        { 
+          q: 'How do I pay for my subscription?', 
+          a: 'We offer convenient payment options including Bank Transfer and STC Pay | STC Bank. All payments are processed securely. You can also contact us on WhatsApp for assistance with your payment.' 
+        },
+        { 
+          q: 'Can I cancel my subscription?', 
+          a: 'Yes, you can cancel anytime. We offer 1, 3, and 5-year plans with upfront pricing — no recurring charges or hidden fees.' 
+        },
       ],
     },
     contact: {
@@ -208,7 +226,7 @@ export const translations: Record<Lang, Translation> = {
       terms: 'Terms of Service',
       privacy: 'Privacy Policy',
       refund: 'Refund Policy',
-      copyright: '© 2026 4K Streaming TV. All rights reserved.',
+      copyright: '© 2026 Prime Streams. All rights reserved.',
       rights: 'All rights reserved.',
     },
     whatsapp: {
@@ -271,7 +289,7 @@ export const translations: Record<Lang, Translation> = {
       plans: [
         { name: 'سنة واحدة', before: 750, now: 375, years: 'سنة واحدة' },
         { name: '3 سنوات', before: 1725, now: 860, years: '3 سنوات' },
-        { name: '5 سنوات', before: 2625, now: 1310, years: '5 سنوات' },
+        { name: '5 سنوات', before: 2420, now: 1210, years: '5 سنوات' },
       ],
     },
     devices: {
@@ -312,12 +330,30 @@ export const translations: Record<Lang, Translation> = {
       title: 'الأسئلة الشائعة',
       subtitle: 'كل ما تحتاج معرفته قبل البدء.',
       items: [
-        { q: 'كيف أحصل على تجربة مجانية؟', a: 'ما عليك سوى الضغط على زر "احصل على تجربة مجانية" ومراسلتنا على واتساب. سنقوم بإعداد تجربتك المجانية لمدة ساعة خلال دقائق حتى تتمكن من اختبار الخدمة قبل الاشتراك.' },
-        { q: 'ما الأجهزة المدعومة؟', a: 'خدمتنا تعمل على التلفزيونات الذكية (سامسونج، LG، سوني)، أجهزة أندرويد، iOS / Apple TV، Amazon Fire TV، Roku، أجهزة Mag، ومعظم الأجهزة المتوافقة مع IPTV.' },
-        { q: 'كم عدد الأجهزة التي يمكنني استخدامها في وقت واحد؟', a: 'يدعم كل اشتراك ما يصل إلى 3 أجهزة بث في نفس الوقت، بحيث يمكن لعائلتك بأكملها الاستمتاع لمحتوى مختلف في وقت واحد.' },
-        { q: 'ما الجودة التي يمكنني توقعها؟', a: 'نقدم بث 4K Ultra HD كامل للقنوات والمحتوى المدعوم، مع HD احتياطي لجميع المحتوى الآخر. يُوصى باتصال 15 ميجابت/ثابت لـ 4K.' },
-        { q: 'كيف أدفع اشتراكي؟', a: 'نقبل Visa وMasterCard وAmerican Express وDiscover. تتم معالجة جميع المدفوعات بشكل آمن. يمكنك أيضاً التواصل معنا على واتساب لطرق دفع بديلة.' },
-        { q: 'هل يمكنني إلغاء اشتراكي؟', a: 'نعم، يمكنك الإلغاء في أي وقت. نقدم خطط لمدة 1 و3 و5 سنوات بأسعار مقدمة — لا توجد رسوم متكررة أو رسوم خفية.' },
+        { 
+          q: 'كيف أحصل على تجربة مجانية؟', 
+          a: 'ما عليك سوى الضغط على زر "احصل على تجربة مجانية" ومراسلتنا على واتساب. سنقوم بإعداد تجربتك المجانية لمدة ساعة خلال دقائق حتى تتمكن من اختبار الخدمة قبل الاشتراك.' 
+        },
+        { 
+          q: 'ما الأجهزة المدعومة؟', 
+          a: 'تدعم خدمتنا مجموعة واسعة من الأجهزة بما في ذلك التلفزيونات الذكية (سامسونج، LG، سوني)، أجهزة أندرويد TV، Apple TV، Firestick، الهواتف الذكية (iOS و أندرويد)، الأجهزة اللوحية، أجهزة الكمبيوتر عبر متصفح الويب، Roku، أجهزة Mag، Formuler، ومعظم الأجهزة المتوافقة مع IPTV.' 
+        },
+        { 
+          q: 'كم عدد الأجهزة التي يمكنني استخدامها في وقت واحد؟', 
+          a: 'يدعم كل اشتراك ما يصل إلى 3 أجهزة بث في نفس الوقت، بحيث يمكن لعائلتك بأكملها الاستمتاع بمحتوى مختلف في وقت واحد.' 
+        },
+        { 
+          q: 'ما الجودة التي يمكنني توقعها؟', 
+          a: 'نقدم بث 4K Ultra HD كامل للقنوات والمحتوى المدعوم، مع HD احتياطي لجميع المحتوى الآخر. للحصول على أفضل تجربة، نوصي باتصال 50 ميجابت/ثانية مستقر للاستمتاع ببث 4K واضح مع الحد الأدنى من التخزين المؤقت.' 
+        },
+        { 
+          q: 'كيف أدفع اشتراكي؟', 
+          a: 'نقدم خيارات دفع مريحة تشمل التحويل البنكي و STC Pay | STC Bank. تتم معالجة جميع المدفوعات بشكل آمن. يمكنك أيضاً التواصل معنا على واتساب للمساعدة في الدفع.' 
+        },
+        { 
+          q: 'هل يمكنني إلغاء اشتراكي؟', 
+          a: 'نعم، يمكنك الإلغاء في أي وقت. نقدم خطط لمدة 1 و3 و5 سنوات بأسعار مقدمة — لا توجد رسوم متكررة أو رسوم خفية.' 
+        },
       ],
     },
     contact: {
