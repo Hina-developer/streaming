@@ -41,7 +41,7 @@ function CarouselRow({ title, posters, titles, icon: Icon, delay = 0 }: Carousel
             x: [0, -(itemWidth * totalItems + gap * (totalItems - 1))] 
           }}
           transition={{
-            duration: 10 * totalItems, // Reduced from 20 to 10 for faster speed
+            duration: 7 * totalItems, // Reduced from 20 to 10 for faster speed
             repeat: Infinity,
             ease: 'linear',
             repeatType: 'loop',
