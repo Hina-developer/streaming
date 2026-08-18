@@ -12,8 +12,14 @@ interface CarouselRowProps {
 }
 
 function CarouselRow({ title, posters, titles, icon: Icon, delay = 0 }: CarouselRowProps) {
-  const items = [...posters, ...posters];
-  const labels = [...titles, ...titles];
+  // Triple the items for seamless infinite scroll
+  const items = [...posters, ...posters, ...posters];
+  const labels = [...titles, ...titles, ...titles];
+
+  // Calculate total width of one set
+  const totalItems = posters.length;
+  const itemWidth = 144; // Base width in rem (36 * 4 = 144px for sm)
+  const gap = 16; // Gap in pixels
 
   return (
     <div className="mb-12">
@@ -31,11 +37,14 @@ function CarouselRow({ title, posters, titles, icon: Icon, delay = 0 }: Carousel
       <div className="relative overflow-hidden">
         <motion.div
           className="flex gap-4"
-          animate={{ x: [0, -50 * (posters.length * 8 + 4)] }}
+          animate={{ 
+            x: [0, -(itemWidth * totalItems + gap * (totalItems - 1))] 
+          }}
           transition={{
-            duration: 40,
+            duration: 10 * totalItems, // Reduced from 20 to 10 for faster speed
             repeat: Infinity,
             ease: 'linear',
+            repeatType: 'loop',
           }}
         >
           {items.map((poster, i) => (

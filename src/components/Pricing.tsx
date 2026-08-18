@@ -487,23 +487,7 @@ export default function Pricing() {
           </div>
 
           {/* Animated secure badge with lock */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.5 }}
-            className="relative z-10"
-          >
-            <motion.div 
-              className="flex items-center gap-2 px-4 py-1.5 rounded-full"
-              style={{ 
-                background: 'rgba(255,255,255,0.03)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255,255,255,0.05)'
-              }}
-              whileHover={{ scale: 1.05 }}
-            >
-            </motion.div>
-          </motion.div>
+
         </motion.div>
       </div>
     </section>
