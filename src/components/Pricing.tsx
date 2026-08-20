@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Check, Crown, Zap, CreditCard, Shield, Sparkles, ArrowRight, Lock, Star } from 'lucide-react';
+import { Check, Crown, Zap, CreditCard, Building2, Smartphone, Banknote } from 'lucide-react';
 import { useApp } from '@/context';
 import { whatsappLink } from '@/constants';
 import stclogo from '@/assets/slogo.png';
@@ -19,16 +19,6 @@ export default function Pricing() {
     { icon: Crown, popular: true },
     { icon: Crown, popular: false },
   ];
-
-  // Floating particles for the payment section
-  const particles = Array.from({ length: 12 }, (_, i) => ({
-    id: i,
-    size: Math.random() * 4 + 2,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    duration: Math.random() * 3 + 2,
-    delay: Math.random() * 2,
-  }));
 
   return (
     <section id="pricing" className="section-pad relative">
@@ -135,359 +125,206 @@ export default function Pricing() {
           })}
         </div>
 
-        {/* ============================================================ */}
-        {/* ULTRA ANIMATED PAYMENT SECTION - MAXIMUM ATTRACTIVENESS */}
-        {/* ============================================================ */}
+        {/* Payment Methods - Updated with STC Pay and Bank Transfer */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="mt-16 flex flex-col items-center gap-6 relative"
+          transition={{ delay: 0.3 }}
+          className="mt-16"
         >
-          {/* Floating particles background */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {particles.map((p) => (
-              <motion.div
-                key={p.id}
-                className="absolute rounded-full"
-                style={{
-                  width: p.size,
-                  height: p.size,
-                  left: `${p.x}%`,
-                  top: `${p.y}%`,
-                  background: `radial-gradient(circle, rgba(99,102,241,${Math.random() * 0.3 + 0.1}), transparent)`,
-                }}
-                animate={{
-                  y: [0, -30, 0, 30, 0],
-                  x: [0, 20, 0, -20, 0],
-                  opacity: [0.2, 0.6, 0.2],
-                  scale: [1, 1.5, 1],
-                }}
-                transition={{
-                  duration: p.duration,
-                  repeat: Infinity,
-                  delay: p.delay,
-                  ease: "easeInOut",
-                }}
-              />
-            ))}
-          </div>
-
-          {/* Animated Divider with Glow */}
-          <motion.div 
-            className="flex items-center gap-4 w-full max-w-lg relative z-10"
-            initial={{ scale: 0.95, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="text-center mb-8"
           >
-            <motion.div 
-              className="flex-1 h-px relative"
-              style={{ background: 'linear-gradient(90deg, transparent, var(--border-color), transparent)' }}
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            />
-            
-            <motion.div 
-              className="flex items-center gap-2 px-5 py-2 rounded-full glass text-xs font-medium relative"
-              style={{ 
-                color: 'var(--text-secondary)', 
-                border: '1px solid rgba(255,255,255,0.08)',
-                boxShadow: '0 0 40px rgba(99,102,241,0.1)'
-              }}
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
-              animate={{
-                boxShadow: [
-                  '0 0 40px rgba(99,102,241,0.1)',
-                  '0 0 60px rgba(99,102,241,0.2)',
-                  '0 0 40px rgba(99,102,241,0.1)'
-                ]
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-              >
-                <Shield className="w-3.5 h-3.5 accent-text" />
-              </motion.div>
-              <span className="font-bold tracking-wider">{t.pricing.securePayment}</span>
-              <motion.div
-                animate={{ 
-                  scale: [1, 1.3, 1],
-                  opacity: [0.5, 1, 0.5]
-                }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <Sparkles className="w-3 h-3 text-amber-400" />
-              </motion.div>
-            </motion.div>
-            
-            <motion.div 
-              className="flex-1 h-px relative"
-              style={{ background: 'linear-gradient(90deg, transparent, var(--border-color), transparent)' }}
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            />
+            <h3 className="text-2xl font-bold" style={{ color: 'var(--text-secondary)' }}>
+              {lang === 'en' ? 'Payment Methods' : 'طرق الدفع'}
+            </h3>
           </motion.div>
 
-          {/* Payment Badges - Ultra Animated */}
-          <div className="flex flex-wrap items-center justify-center gap-6 relative z-10">
-            
-            {/* ====== BANK TRANSFER - ULTRA ANIMATED ====== */}
+          <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-8">
+            {/* Bank Transfer Card - Larger & Glowier */}
             <motion.div
-              className="group relative px-7 py-3.5 rounded-2xl border border-white/10 transition-all duration-500 flex items-center gap-3 cursor-default overflow-hidden"
-              style={{ 
-                color: 'var(--text-secondary)',
-                background: 'rgba(255,255,255,0.03)',
-                backdropFilter: 'blur(20px)',
-                boxShadow: '0 8px 40px rgba(0,0,0,0.25)'
-              }}
-              initial={{ opacity: 0, x: -30, rotateY: -15 }}
-              whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
-              transition={{ delay: 0.5, duration: 0.6, type: "spring", stiffness: 200 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
               whileHover={{ 
                 scale: 1.08,
-                borderColor: 'rgba(99,102,241,0.4)',
-                boxShadow: '0 12px 60px rgba(99,102,241,0.2), inset 0 0 40px rgba(99,102,241,0.05)',
-                y: -4
+                boxShadow: '0 0 30px rgba(59,130,246,0.4), 0 0 60px rgba(59,130,246,0.2)'
               }}
-            >
-              {/* Animated gradient background */}
-              <motion.div 
-                className="absolute inset-0"
-                style={{ 
-                  background: 'linear-gradient(135deg, rgba(99,102,241,0.08), rgba(139,92,246,0.02))',
-                  borderRadius: 'inherit'
-                }}
-                animate={{
-                  background: [
-                    'linear-gradient(135deg, rgba(99,102,241,0.08), rgba(139,92,246,0.02))',
-                    'linear-gradient(225deg, rgba(99,102,241,0.12), rgba(139,92,246,0.04))',
-                    'linear-gradient(135deg, rgba(99,102,241,0.08), rgba(139,92,246,0.02))'
-                  ]
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-              />
-              
-              {/* Glow ring on hover */}
-              <motion.div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ 
-                  border: '2px solid rgba(99,102,241,0.15)',
-                  boxShadow: '0 0 60px rgba(99,102,241,0.1)'
-                }}
-                animate={{
-                  scale: [1, 1.02, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              
-              <motion.div 
-                className="w-11 h-11 rounded-xl flex items-center justify-center relative z-10"
-                style={{ background: 'rgba(255,255,255,0.06)' }}
-                whileHover={{ 
-                  rotate: [0, -8, 8, -8, 0],
-                  transition: { duration: 0.5 },
-                  background: 'rgba(99,102,241,0.15)'
-                }}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="accent-text">
-                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                </svg>
-              </motion.div>
-              
-              <span className="text-sm font-bold tracking-wide relative z-10">Bank Transfer</span>
-              
-              {/* Floating particles around card */}
-              <motion.div
-                className="absolute -right-4 -top-4 w-12 h-12 rounded-full"
-                style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.15), transparent)' }}
-                animate={{
-                  scale: [1, 2, 1],
-                  opacity: [0, 0.3, 0]
-                }}
-                transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
-              />
-              <motion.div
-                className="absolute -left-3 -bottom-3 w-8 h-8 rounded-full"
-                style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.1), transparent)' }}
-                animate={{
-                  scale: [1, 2.5, 1],
-                  opacity: [0, 0.2, 0]
-                }}
-                transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-              />
-            </motion.div>
-
-            {/* ====== STC PAY - ULTRA PREMIUM ANIMATED ====== */}
-            <motion.div
-              className="group relative px-7 py-3.5 rounded-2xl border border-white/10 transition-all duration-500 flex items-center gap-3 cursor-default overflow-hidden"
+              className="glass-card p-6 lg:p-8 rounded-2xl flex items-center gap-4 min-w-[200px] justify-center relative overflow-hidden"
               style={{ 
-                color: 'var(--text-secondary)',
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(99,102,241,0.03))',
-                backdropFilter: 'blur(20px)',
-                boxShadow: '0 8px 40px rgba(0,0,0,0.25)'
-              }}
-              initial={{ opacity: 0, x: 30, rotateY: 15 }}
-              whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
-              transition={{ delay: 0.6, duration: 0.6, type: "spring", stiffness: 200 }}
-              whileHover={{ 
-                scale: 1.08,
-                borderColor: 'rgba(99,102,241,0.5)',
-                boxShadow: '0 12px 60px rgba(99,102,241,0.25), 0 0 80px rgba(99,102,241,0.05)',
-                y: -4
+                background: 'linear-gradient(135deg, rgba(59,130,246,0.15), rgba(37,99,235,0.08))',
+                border: '2px solid rgba(59,130,246,0.3)',
+                boxShadow: '0 0 20px rgba(59,130,246,0.15)'
               }}
             >
-              {/* Animated shimmer background */}
-              <motion.div 
+              {/* Animated glow background */}
+              <motion.div
                 className="absolute inset-0"
                 style={{ 
-                  background: 'linear-gradient(135deg, rgba(99,102,241,0.06), rgba(139,92,246,0.02), rgba(99,102,241,0.06))',
-                  borderRadius: 'inherit'
+                  background: 'radial-gradient(circle at center, rgba(59,130,246,0.15), transparent 70%)'
                 }}
                 animate={{
-                  background: [
-                    'linear-gradient(135deg, rgba(99,102,241,0.06), rgba(139,92,246,0.02), rgba(99,102,241,0.06))',
-                    'linear-gradient(225deg, rgba(99,102,241,0.10), rgba(139,92,246,0.04), rgba(99,102,241,0.10))',
-                    'linear-gradient(315deg, rgba(99,102,241,0.06), rgba(139,92,246,0.02), rgba(99,102,241,0.06))'
-                  ]
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-              />
-
-              {/* Animated border glow */}
-              <motion.div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ 
-                  border: '2px solid rgba(99,102,241,0.2)',
-                  boxShadow: '0 0 80px rgba(99,102,241,0.1)'
-                }}
-                animate={{
-                  scale: [1, 1.03, 1],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              
-              <motion.div 
-                className="w-11 h-11 rounded-xl flex items-center justify-center overflow-hidden relative z-10 bg-white/5 p-1.5"
-                whileHover={{ 
-                  scale: 1.15,
-                  rotate: [0, -5, 5, -5, 0],
-                  transition: { duration: 0.5 }
-                }}
-                animate={{
-                  boxShadow: [
-                    '0 0 20px rgba(99,102,241,0)',
-                    '0 0 30px rgba(99,102,241,0.05)',
-                    '0 0 20px rgba(99,102,241,0)'
-                  ]
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                <img 
-                  src={stclogo} 
-                  alt="STC" 
-                  className="h-7 w-auto object-contain" 
-                />
-              </motion.div>
-              
-              <div className="flex flex-col items-start leading-tight relative z-10">
-                <motion.span 
-                  className="text-sm font-bold tracking-wide"
-                  whileHover={{ 
-                    color: '#818cf8',
-                    transition: { duration: 0.2 }
-                  }}
-                >
-                  STC Pay
-                </motion.span>
-                <span className="text-[10px] font-medium opacity-50">STC Bank</span>
-              </div>
-
-              {/* Pulse ring effect */}
-              <motion.div
-                className="absolute -inset-1 rounded-2xl"
-                style={{ 
-                  border: '1px solid rgba(99,102,241,0.1)',
-                }}
-                animate={{
-                  scale: [1, 1.05, 1],
-                  opacity: [0, 0.4, 0]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-
-              {/* Multiple sparkle particles */}
-              <motion.div
-                className="absolute top-1 right-2 w-1.5 h-1.5 rounded-full bg-amber-400"
-                animate={{
-                  scale: [0, 2, 0],
-                  opacity: [0, 0.8, 0]
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  delay: 0.2
-                }}
-              />
-              <motion.div
-                className="absolute bottom-2 left-1/3 w-1 h-1 rounded-full bg-blue-400"
-                animate={{
-                  scale: [0, 1.5, 0],
-                  opacity: [0, 0.5, 0]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  delay: 0.8
-                }}
-              />
-              <motion.div
-                className="absolute top-1/2 -right-1 w-1.5 h-1.5 rounded-full bg-purple-400"
-                animate={{
-                  scale: [0, 1.8, 0],
-                  opacity: [0, 0.4, 0]
+                  scale: [1, 1.3, 1],
+                  opacity: [0.3, 0.6, 0.3]
                 }}
                 transition={{
                   duration: 2.5,
                   repeat: Infinity,
-                  delay: 1.3
+                  ease: "easeInOut"
                 }}
               />
+              
+              <Banknote className="w-8 h-8 text-blue-500 relative z-10" />
+              <div className="relative z-10">
+                <p className="text-base font-bold" style={{ color: 'var(--text-primary)' }}>
+                  {lang === 'en' ? 'Bank Transfer' : 'تحويل بنكي'}
+                </p>
+                <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
+                  {lang === 'en' ? 'Direct transfer' : 'تحويل مباشر'}
+                </p>
+              </div>
+            </motion.div>
+
+            {/* STC Pay / STC Bank Card - Larger & Glowier */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+              whileHover={{ 
+                scale: 1.08,
+                boxShadow: '0 0 40px rgba(74,14,78,0.5), 0 0 80px rgba(74,14,78,0.25), 0 0 120px rgba(255,107,0,0.15)'
+              }}
+              className="glass-card p-6 lg:p-8 rounded-2xl flex items-center gap-4 min-w-[220px] justify-center relative overflow-hidden"
+              style={{ 
+                background: 'linear-gradient(135deg, rgba(74,14,78,0.2), rgba(255,107,0,0.08))',
+                border: '2px solid rgba(74,14,78,0.4)',
+                boxShadow: '0 0 30px rgba(74,14,78,0.2), 0 0 60px rgba(74,14,78,0.1)'
+              }}
+            >
+              {/* Animated background glow */}
               <motion.div
-                className="absolute bottom-1/2 -left-1 w-1 h-1 rounded-full bg-cyan-400"
+                className="absolute inset-0"
+                style={{ 
+                  background: 'radial-gradient(circle at 40% 50%, rgba(74,14,78,0.25), rgba(255,107,0,0.1), transparent 70%)'
+                }}
                 animate={{
-                  scale: [0, 1.5, 0],
-                  opacity: [0, 0.3, 0]
+                  scale: [1, 1.4, 1],
+                  opacity: [0.2, 0.5, 0.2]
                 }}
                 transition={{
                   duration: 3,
                   repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              
+              {/* Secondary glow pulse */}
+              <motion.div
+                className="absolute inset-0 rounded-2xl"
+                style={{ 
+                  background: 'radial-gradient(circle at 60% 50%, rgba(255,107,0,0.15), transparent 60%)'
+                }}
+                animate={{
+                  scale: [1, 1.5, 1],
+                  opacity: [0.1, 0.3, 0.1]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
                   delay: 0.5
+                }}
+              />
+              
+              {/* STC PNG Logo with Animation */}
+              <motion.img
+                src={stclogo}
+                alt="STC Logo"
+                className="w-12 h-12 object-contain relative z-10"
+                animate={{
+                  scale: [1, 1.1, 1],
+                  rotate: [0, 5, -5, 0]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              
+              <div className="relative z-10">
+                <p className="text-base font-bold" style={{ color: 'var(--text-primary)' }}>
+                  {lang === 'en' ? 'STC Pay' : 'STC باي'}
+                </p>
+                <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
+                  {lang === 'en' ? 'STC Bank' : 'بنك STC'}
+                </p>
+                <motion.div
+                  className="h-0.5 w-full bg-gradient-to-r from-[#4A0E4E] via-[#FF6B00] to-[#4A0E4E] mt-1.5"
+                  animate={{
+                    scaleX: [0, 1, 0],
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              </div>
+
+              {/* Animated pulse ring border */}
+              <motion.div
+                className="absolute inset-0 rounded-2xl"
+                style={{ border: '2px solid rgba(74,14,78,0.3)' }}
+                animate={{
+                  scale: [1, 1.06, 1],
+                  opacity: [0.2, 0.6, 0.2]
+                }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              
+              {/* Additional outer glow ring */}
+              <motion.div
+                className="absolute inset-[-4px] rounded-2xl"
+                style={{ border: '1px solid rgba(255,107,0,0.15)' }}
+                animate={{
+                  scale: [1, 1.08, 1],
+                  opacity: [0, 0.4, 0]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.3
                 }}
               />
             </motion.div>
           </div>
 
-          {/* Animated secure badge with lock */}
-
+          {/* Additional info */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.7 }}
+            className="text-center mt-6 text-sm"
+            style={{ color: 'var(--text-muted)' }}
+          >
+            {lang === 'en' 
+              ? 'Secure payment options available' 
+              : 'خيارات دفع آمنة متاحة'}
+          </motion.p>
         </motion.div>
       </div>
     </section>
