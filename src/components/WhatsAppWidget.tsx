@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send, ChevronDown } from 'lucide-react';
+import { X, Send, ChevronDown } from 'lucide-react';
 import { useApp } from '@/context';
 import { whatsappLink } from '@/constants';
+import whatsapplogo from '@/assets/wlogo.png';
 
 export default function WhatsAppWidget() {
   const { t, lang } = useApp();
@@ -62,7 +63,12 @@ export default function WhatsAppWidget() {
             </motion.div>
           ) : (
             <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }}>
-              <MessageCircle className="w-7 h-7 text-white fill-white/20" />
+              {/* ✅ SIZE: w-14 h-14 (MORE BIGGER) */}
+              <img 
+                src={whatsapplogo} 
+                alt="Custom Logo" 
+                className="w-14 h-14 object-contain" 
+              />
             </motion.div>
           )}
         </AnimatePresence>
@@ -85,8 +91,13 @@ export default function WhatsAppWidget() {
             {/* Header */}
             <div className="bg-[#075E54] p-4 flex items-center gap-3">
               <div className="relative">
-                <div className="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center">
-                  <MessageCircle className="w-5 h-5 text-white" />
+                {/* ✅ SIZE: w-16 h-16 (LARGEST) */}
+                <div className="w-16 h-16 rounded-full bg-[#25D366] flex items-center justify-center overflow-hidden p-2">
+                  <img 
+                    src={whatsapplogo} 
+                    alt="Custom Logo" 
+                    className="w-full h-full object-contain" 
+                  />
                 </div>
                 <span className="absolute bottom-0 end-0 w-3 h-3 bg-green-400 rounded-full border-2 border-[#075E54]" />
               </div>
@@ -134,7 +145,8 @@ export default function WhatsAppWidget() {
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#25D366] text-black font-bold text-sm hover:bg-[#1ebe5d] transition-colors mb-2"
               >
-                <MessageCircle className="w-4 h-4" />
+                {/* ✅ SIZE: w-10 h-10 (BIGGER AND BALANCED) */}
+                <img src={whatsapplogo} alt="Logo" className="w-10 h-10 object-contain" />
                 {t.whatsapp.openChat}
               </a>
               {/* Input */}
