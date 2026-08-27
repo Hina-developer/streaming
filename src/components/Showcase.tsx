@@ -12,6 +12,8 @@ interface CarouselRowProps {
 }
 
 function CarouselRow({ title, posters, titles, icon: Icon, delay = 0 }: CarouselRowProps) {
+  const { isRTL } = useApp(); // Get RTL status from context
+  
   // Triple the items for seamless infinite scroll
   const items = [...posters, ...posters, ...posters];
   const labels = [...titles, ...titles, ...titles];
@@ -20,15 +22,17 @@ function CarouselRow({ title, posters, titles, icon: Icon, delay = 0 }: Carousel
   const totalItems = posters.length;
   const itemWidth = 144; // Base width in rem (36 * 4 = 144px for sm)
   const gap = 16; // Gap in pixels
+  
+  const totalWidth = (itemWidth * totalItems + gap * (totalItems - 1));
 
   return (
     <div className="mb-12">
       <motion.div
-        initial={{ opacity: 0, x: -20 }}
+        initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay }}
-        className="flex items-center gap-2 mb-5"
+        className={`flex items-center gap-2 mb-5 ${isRTL ? 'flex-row-reverse' : ''}`}
       >
         <Icon className="w-6 h-6 accent-text" />
         <h3 className="text-xl sm:text-2xl font-bold">{title}</h3>
@@ -36,21 +40,26 @@ function CarouselRow({ title, posters, titles, icon: Icon, delay = 0 }: Carousel
 
       <div className="relative overflow-hidden">
         <motion.div
-          className="flex gap-4"
+          className={`flex gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}
           animate={{ 
-            x: [0, -(itemWidth * totalItems + gap * (totalItems - 1))] 
+            x: isRTL ? [-totalWidth, 0] : [0, -totalWidth]
           }}
           transition={{
-            duration: 7 * totalItems, // Reduced from 20 to 10 for faster speed
+            duration: 7 * totalItems,
             repeat: Infinity,
             ease: 'linear',
             repeatType: 'loop',
+          }}
+          style={{
+            direction: isRTL ? 'rtl' : 'ltr'
           }}
         >
           {items.map((poster, i) => (
             <div
               key={i}
-              className="group relative shrink-0 w-36 sm:w-44 lg:w-48 aspect-[2/3] rounded-xl overflow-hidden cursor-pointer"
+              className={`group relative shrink-0 w-36 sm:w-44 lg:w-48 aspect-[2/3] rounded-xl overflow-hidden cursor-pointer ${
+                isRTL ? 'rtl' : ''
+              }`}
             >
               <img
                 src={poster}
@@ -65,7 +74,9 @@ function CarouselRow({ title, posters, titles, icon: Icon, delay = 0 }: Carousel
                 </div>
               </div>
               <div className="absolute bottom-0 inset-x-0 p-3">
-                <p className="text-sm font-bold text-white truncate">{labels[i % labels.length]}</p>
+                <p className={`text-sm font-bold text-white truncate ${isRTL ? 'text-right' : ''}`}>
+                  {labels[i % labels.length]}
+                </p>
               </div>
             </div>
           ))}
